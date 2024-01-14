@@ -8,10 +8,6 @@ import axios from 'axios'
 
 const Todo = () => {
   let id = sessionStorage.getItem('id')
-  const [Inputs, setInputs] = useState({
-    title: '',
-    body: '',
-  })
   const fetch = async () => {
     await axios
       .get(`${window.location.origin}/api/v1/getTasks/${id}`)
@@ -19,8 +15,15 @@ const Todo = () => {
         setArray(response.data.list)
       })
   }
+
+  const [Inputs, setInputs] = useState({
+    title: '',
+    body: '',
+  })
+
   const [Array, setArray] = useState([])
   const [toUpdateArray, setToUpdateArray] = useState([])
+
   useEffect(() => {
     if (id) {
       const fetch = async () => {

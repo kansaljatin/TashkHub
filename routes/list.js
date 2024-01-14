@@ -2,7 +2,7 @@ const router = require('express').Router()
 const User = require('../models/user')
 const List = require('../models/list')
 
-//create
+//create task
 router.post('/addTask', async (req, res) => {
   try {
     const { title, body, id } = req.body
@@ -31,7 +31,7 @@ router.put('/updateTask/:id', async (req, res) => {
   }
 })
 
-//delete
+//delete task
 router.delete('/deleteTask/:id', async (req, res) => {
   try {
     const { id } = req.body
@@ -48,7 +48,7 @@ router.delete('/deleteTask/:id', async (req, res) => {
   }
 })
 
-//getTska
+//get all Tasks created by user
 router.get('/getTasks/:id', async (req, res) => {
   try {
     const list = await List.find({ user: req.params.id }).sort({
