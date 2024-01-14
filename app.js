@@ -20,11 +20,12 @@ app.use('/api/v1', authRoutes)
 app.use('/api/v1', listRoutes)
 
 app.get('/', (req, res) => {
-  res.send('Welcome to todo app')
-})
-app.get('/', (req, res) => {
   app.use(express.static(path.resolve(__dirname, 'frontend', 'build')))
   res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+})
+
+app.get('/', (req, res) => {
+  res.send('Welcome to todo app')
 })
 app.listen(process.env.PORT, () => {
   console.log(`server started on ${process.env.PORT}`)
