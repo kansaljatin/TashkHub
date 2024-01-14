@@ -26,7 +26,7 @@ const Signup = () => {
     ) {
       toast.error('Please enter all the required fields!')
     } else {
-      const emailRegex = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
       if (emailRegex.test(Inputs.email)) {
         await axios
           .post(`${window.location.origin}/api/v1/register`, Inputs)
